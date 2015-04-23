@@ -12,11 +12,11 @@ makeCacheMatrix <- function(x = matrix()) {
     m <<- NULL
   }
   get <- function() x
-  setinverse <- function(solve) m <<- solve ##To be honest, I don't understand this line.
-  getinverse <- function() m
+  setinverse <- function(solve) m <<- solve ##But I changed the variable's name and function. Also what is this line about?
+  getinverse <- function() m ##also changed the variables name.
   list(set = set, get = get,
-       setinverse = setinverse,
-       getinverse = getinverse)
+       setinverse = setinverse, ##same
+       getinverse = getinverse) ##same
 
 }
 
@@ -24,14 +24,14 @@ makeCacheMatrix <- function(x = matrix()) {
 ## This is almost the same function as provided in the example.
 
 cacheSolve <- function(x, ...) {
-  m <- x$getinverse()
+  m <- x$getinverse() ##same
   if(!is.null(m)) {
     message("getting cached data")
     return(m)
   }
   data <- x$get()
-  m <- solve(data, ...)
-  x$setinverse(m)
+  m <- solve(data, ...) ##changed the function
+  x$setinverse(m) ##name
   m
   
 }
